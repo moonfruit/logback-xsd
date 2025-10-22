@@ -40,9 +40,8 @@
 		<xsd:anyAttribute/>
 	</xsd:complexType>
 	<xsd:complexType name="ConversionRule">
-		<xsd:attribute name="conversionWord" type="xsd:string"/>
-		<xsd:attribute name="converterClass" type="xsd:string"/>
-		<xsd:attribute name="class" type="xsd:string"/>
+		<xsd:attribute name="conversionWord" type="xsd:string" use="required"/>
+		<xsd:attribute name="class" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="StatusListener">
 		<xsd:attribute name="class" type="xsd:string" use="optional"/>
@@ -103,7 +102,7 @@
 		<xsd:attribute name="class" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="Condition">
-		<xsd:attribute name="class" type="xsd:string"/>
+		<xsd:attribute name="class" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="If">
 		<xsd:choice maxOccurs="unbounded">
