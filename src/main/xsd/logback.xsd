@@ -4,16 +4,11 @@
 		https://github.com/enricopulatzo/logback-XSD
 		https://github.com/nkatsar/logback-XSD
 -->
-<xsd:schema targetNamespace="http://ch.qos.logback/xml/ns/logback"
-						xmlns="http://ch.qos.logback/xml/ns/logback"
-						xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-						elementFormDefault="qualified"
-						attributeFormDefault="unqualified"
-						version="1.1">
-
+<xsd:schema targetNamespace="http://ch.qos.logback/xml/ns/logback" xmlns="http://ch.qos.logback/xml/ns/logback"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.1">
 	<xsd:element name="configuration" type="Configuration"/>
 	<xsd:element name="included" type="Configuration"/>
-
 	<xsd:complexType name="Configuration">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="shutdownHook" minOccurs="0" maxOccurs="1" type="ShutdownHook"/>
@@ -38,23 +33,19 @@
 		<xsd:attribute name="packagingData" type="xsd:boolean" use="optional" default="false"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="ShutdownHook">
 		<xsd:attribute name="class" type="xsd:string" use="optional"
-									 default="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+			default="ch.qos.logback.core.hook.DelayingShutdownHook"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="ConversionRule">
 		<xsd:attribute name="conversionWord" type="xsd:string"/>
 		<xsd:attribute name="converterClass" type="xsd:string"/>
 	</xsd:complexType>
-
 	<xsd:complexType name="StatusListener">
 		<xsd:attribute name="class" type="xsd:string" use="optional"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="ContextListener">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="resetJUL" type="xsd:boolean"/>
@@ -63,21 +54,18 @@
 		<xsd:attribute name="class" type="xsd:string"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Include">
 		<xsd:attribute name="file" use="optional" type="xsd:string"/>
 		<xsd:attribute name="resource" use="optional" type="xsd:string"/>
 		<xsd:attribute name="url" use="optional" type="xsd:string"/>
 		<xsd:attribute name="optional" use="optional" type="xsd:boolean"/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Define">
 		<xsd:sequence>
 			<xsd:any minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Timestamp">
 		<xsd:sequence>
 			<xsd:any minOccurs="0" maxOccurs="unbounded"/>
@@ -87,34 +75,31 @@
 		<xsd:attribute name="timeReference" type="xsd:string" use="optional"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="RollingPolicy">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="fileNamePattern" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 			<xsd:element name="maxHistory" minOccurs="0" maxOccurs="1" type="xsd:int"/>
 			<xsd:element name="minIndex" minOccurs="0" maxOccurs="1" type="xsd:int"/>
 			<xsd:element name="maxIndex" minOccurs="0" maxOccurs="1" type="xsd:int"/>
-			<xsd:element name="timeBasedFileNamingAndTriggeringPolicy" minOccurs="0" maxOccurs="1" type="TriggeringPolicy"/>
+			<xsd:element name="timeBasedFileNamingAndTriggeringPolicy" minOccurs="0" maxOccurs="1"
+				type="TriggeringPolicy"/>
 			<xsd:element name="cleanHistoryOnStart" minOccurs="0" maxOccurs="1" type="xsd:boolean"/>
 			<xsd:element name="maxFileSize" minOccurs="0" maxOccurs="1" type="FileSize"/>
 			<xsd:element name="totalSizeCap" minOccurs="0" maxOccurs="1" type="FileSize"/>
 		</xsd:choice>
 		<xsd:attribute name="class" type="xsd:string" use="required"/>
 	</xsd:complexType>
-
 	<xsd:simpleType name="FileSize">
 		<xsd:restriction base="xsd:string">
 			<xsd:pattern value="[1-9][0-9]*(KB|MB|GB)?"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-
 	<xsd:complexType name="TriggeringPolicy">
 		<xsd:sequence>
 			<xsd:element name="maxFileSize" minOccurs="0" maxOccurs="1" type="FileSize"/>
 		</xsd:sequence>
 		<xsd:attribute name="class" type="xsd:string" use="required"/>
 	</xsd:complexType>
-
 	<xsd:complexType name="If">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element type="Configuration" name="then"/>
@@ -124,7 +109,6 @@
 		<xsd:attribute name="condition" type="xsd:string"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Property">
 		<xsd:sequence>
 			<xsd:any minOccurs="0" maxOccurs="unbounded"/>
@@ -136,7 +120,6 @@
 		<xsd:attribute name="resource" type="xsd:string" use="optional"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Appender">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="target" minOccurs="0" maxOccurs="1" type="Target"/>
@@ -157,14 +140,12 @@
 		<xsd:attribute name="class" type="xsd:string" use="required"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:simpleType name="Target">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="System.out"/>
 			<xsd:enumeration value="System.err"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-
 	<xsd:complexType name="Filter">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="level" minOccurs="0" maxOccurs="unbounded" type="LoggerLevel"/>
@@ -175,7 +156,6 @@
 		<xsd:attribute name="class" type="xsd:string" use="optional"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:simpleType name="MatchValue">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="ACCEPT"/>
@@ -183,7 +163,6 @@
 			<xsd:enumeration value="NEUTRAL"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-
 	<xsd:complexType name="Layout">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="pattern" minOccurs="0" maxOccurs="1" type="xsd:string"/>
@@ -192,7 +171,6 @@
 		<xsd:attribute name="class" type="xsd:string" use="optional"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Logger">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="appender-ref" minOccurs="0" maxOccurs="unbounded" type="AppenderRef"/>
@@ -203,7 +181,6 @@
 		<xsd:attribute name="additivity" type="xsd:boolean" use="optional" default="true"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Encoder">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="charset" type="xsd:string" minOccurs="0" maxOccurs="1"/>
@@ -213,10 +190,8 @@
 			<xsd:element name="pattern" type="xsd:string" minOccurs="0" maxOccurs="1"/>
 		</xsd:choice>
 		<xsd:attribute name="class" type="xsd:string" use="optional"
-					   default="ch.qos.logback.classic.encoder.PatternLayoutEncoder"
-		/>
+			default="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
 	</xsd:complexType>
-
 	<xsd:complexType name="Root">
 		<xsd:sequence>
 			<xsd:element name="appender-ref" minOccurs="0" maxOccurs="unbounded" type="AppenderRef"/>
@@ -224,11 +199,9 @@
 		<xsd:attribute name="level" use="required" type="LoggerLevel"/>
 		<xsd:anyAttribute/>
 	</xsd:complexType>
-
 	<xsd:complexType name="AppenderRef">
 		<xsd:attribute name="ref" type="xsd:string"/>
 	</xsd:complexType>
-
 	<xsd:simpleType name="LoggerLevel">
 		<xsd:union>
 			<xsd:simpleType>
@@ -269,9 +242,7 @@
 			</xsd:simpleType>
 		</xsd:union>
 	</xsd:simpleType>
-
 	<xsd:complexType name="JmxConfigurator"/>
-
 	<xsd:complexType name="ConnectionSource">
 		<xsd:sequence>
 			<xsd:element name="driverClass" type="xsd:string"/>
@@ -281,5 +252,4 @@
 		</xsd:sequence>
 		<xsd:attribute name="class" type="xsd:string" use="required"/>
 	</xsd:complexType>
-
 </xsd:schema>
